@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Proposal · Career Services & Employability · Van Lang University</title>
+  
+  <!-- Google Fonts for premium typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== CSS VARIABLES & DESIGN SYSTEM ===== */
+    :root {
+      /* VLU Crimson Theme (Light - Default) */
+      --bg: #FAF8F6;
+      --bg-2: #F1ECE6;
+      --paper: #FFFFFF;
+      --ink: #1F1212;
+      --ink-soft: #4A3A3A;
+      --ink-mute: #8C7575;
+      --rule: #EAE0D8;
+      --rule-soft: #F2EAE4;
+      --accent: #991B1B; /* VLU Crimson */
+      --accent-soft: #FEE2E2;
+      --accent-ink: #FFFFFF;
+      --gold: #D4AF37; /* Metallic Gold */
+      --gold-soft: #FEF3C7;
+      
+      --serif: "Lora", Georgia, serif;
+      --sans: "Plus Jakarta Sans", -apple-system, sans-serif;
+      --mono: "JetBrains Mono", monospace;
+      
+      --measure: 66ch;
+      --gutter: clamp(24px, 5vw, 56px);
+      --maxw: 1280px;
+    }
+
+    body.dark-theme {
+      /* VLU Midnight Theme (Dark) */
+      --bg: #0C0707;
+      --bg-2: #190F0F;
+      --paper: #221515;
+      --ink: #F7EFEF;
+      --ink-soft: #DAC3C3;
+      --ink-mute: #A68D8D;
+      --rule: #3D2222;
+      --rule-soft: #301A1A;
+      --accent: #EF4444; /* Vibrant Crimson on dark background */
+      --accent-soft: #5C0F0F;
+      --accent-ink: #FFFFFF;
+      --gold: #FBBF24;
+      --gold-soft: #451A03;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-padding-top: 84px;
+      scroll-behavior: smooth;
+      overflow-x: clip;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16.5px;
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      position: relative;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* Subtle paper grain background overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 150;
+      background-image: radial-gradient(rgba(153, 27, 27, 0.015) 1px, transparent 1px);
+      background-size: 3px 3px;
+      mix-blend-mode: multiply;
+      opacity: 0.8;
+    }
+    
+    body.dark-theme::before {
+      background-image: radial-gradient(rgba(239, 68, 68, 0.01) 1px, transparent 1px);
+      mix-blend-mode: screen;
+      opacity: 0.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--accent-ink);
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+
+    p {
+      text-wrap: pretty;
+      margin-bottom: 1.5rem;
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ===== LAYOUT & SHELL ===== */
+    .shell {
+      position: relative;
+      z-index: 2;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ===== TOP BAR STICKY HEADER ===== */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: color-mix(in oklab, var(--bg) 94%, transparent);
+      backdrop-filter: saturate(140%) blur(8px);
+      -webkit-backdrop-filter: saturate(140%) blur(8px);
+      border-bottom: 1px solid var(--rule-soft);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .topbar .shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .brand .logo-symbol {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .topnav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .topnav a {
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    .topnav a:hover {
+      color: var(--accent);
+      background: var(--rule-soft);
+    }
+    .topnav a.active {
+      color: var(--accent);
+      font-weight: 600;
+      background: var(--accent-soft);
+    }
+
+    /* Hamburger Menu Toggle for Mobile */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--ink-soft);
+      transition: 0.3s;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .doc-head {
+      padding-block: 120px 96px;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .doc-head::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(to bottom, 
+          rgba(250, 248, 246, 0.45) 0%, 
+          rgba(250, 248, 246, 0.85) 65%, 
+          var(--bg) 100%
+        ),
+        url("https://vluwebmedia.s3.ap-southeast-1.amazonaws.com/01_2_edit_cb3dc01c59.jpg") center / cover no-repeat;
+      z-index: -1;
+      pointer-events: none;
+      transition: background 0.3s ease;
+    }
+    body.dark-theme .doc-head::before {
+      background: 
+        linear-gradient(to bottom, 
+          rgba(12, 7, 7, 0.5) 0%, 
+          rgba(12, 7, 7, 0.9) 65%, 
+          var(--bg) 100%
+        ),
+        url("https://vluwebmedia.s3.ap-southeast-1.amazonaws.com/01_2_edit_cb3dc01c59.jpg") center / cover no-repeat;
+    }
+    .doc-head::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, color-mix(in oklab, var(--accent) 15%, transparent), transparent 60%);
+      z-index: -1;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      opacity: 0.5;
+    }
+    .doc-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 56px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .doc-meta .cell {
+      display: flex;
+      flex-direction: column;
+    }
+    .doc-meta .cell .l {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .doc-meta .cell .v {
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .doc-meta .cell .v em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .doc-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      font-weight: 500;
+      color: var(--ink);
+      max-width: 22ch;
+    }
+    .doc-title em {
+      font-style: italic;
+      color: var(--accent);
+      display: block;
+      margin-top: 8px;
+    }
+
+    /* ===== EDITORIAL GRID SECTIONS ===== */
+    .psection {
+      padding-block: 96px;
+      border-top: 1px solid var(--rule-soft);
+    }
+    .psection-grid {
+      display: grid;
+      grid-template-columns: 1fr 2.4fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .psection-num {
+      position: sticky;
+      top: 104px;
+      align-self: start;
+      padding-top: 8px;
+    }
+    .psection-num .n {
+      font-family: var(--mono);
+      font-size: clamp(48px, 6vw, 84px);
+      line-height: 0.9;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+    .psection-num h2 {
+      font-family: var(--serif);
+      font-size: clamp(24px, 2.4vw, 32px);
+      line-height: 1.15;
+      color: var(--ink);
+      font-weight: 400;
+      max-width: 14ch;
+    }
+    .psection-num h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .overview p {
+      font-family: var(--serif);
+      font-size: clamp(17px, 1.3vw, 20px);
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: var(--measure);
+      margin-bottom: 24px;
+    }
+    .overview p strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ===== STATS CHARTS ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-block: 36px;
+    }
+    .stat-card {
+      background: var(--bg-2);
+      padding: 28px;
+      border-radius: 6px;
+      border: 1px solid var(--rule-soft);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-card.highlighted {
+      border-left: 4px solid var(--accent);
+      background: var(--paper);
+      box-shadow: 0 4px 20px rgba(153, 27, 27, 0.03);
+    }
+    body.dark-theme .stat-card.highlighted {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: clamp(38px, 4.5vw, 56px);
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+    .stat-bar {
+      height: 6px;
+      background: var(--rule-soft);
+      border-radius: 3px;
+      margin-top: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .stat-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      width: 0; /* Animated by JS */
+      transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Hard Truth Box */
+    .case-study-box {
+      background: var(--paper);
+      border-left: 3px solid var(--gold);
+      padding: 24px 28px;
+      margin-block: 32px;
+      border-radius: 0 6px 6px 0;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.01);
+    }
+    body.dark-theme .case-study-box {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    .case-study-box h4 {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--gold);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .case-study-box p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    /* Comparative Table */
+    .table-container {
+      overflow-x: auto;
+      margin-block: 32px 16px;
+      border-top: 1px solid var(--rule);
+      border-radius: 2px;
+    }
+    .editorial-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 15px;
+      min-width: 600px;
+    }
+    .editorial-table th {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 16px;
+      border-bottom: 1px solid var(--rule);
+      font-weight: 700;
+    }
+    .editorial-table td {
+      padding: 20px 16px;
+      border-bottom: 1px solid var(--rule-soft);
+      line-height: 1.55;
+      color: var(--ink-soft);
+      vertical-align: top;
+    }
+    .editorial-table tr:last-child td {
+      border-bottom: 1px solid var(--rule);
+    }
+    .editorial-table td.negative {
+      color: #c2410c;
+      font-style: italic;
+    }
+    body.dark-theme .editorial-table td.negative {
+      color: #fb923c;
+    }
+    .editorial-table td.positive {
+      color: #166534;
+      font-weight: 600;
+    }
+    body.dark-theme .editorial-table td.positive {
+      color: #4ade80;
+    }
+
+    /* ===== OBJECTIVES LIST WITH CUSTOM COUNTERS ===== */
+    .obj-list {
+      list-style: none;
+      counter-reset: obj;
+    }
+    .obj-list li {
+      counter-increment: obj;
+      padding: 24px 0;
+      border-top: 1px solid var(--rule-soft);
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      align-items: baseline;
+    }
+    .obj-list li:first-child {
+      border-top: 1px solid var(--rule);
+    }
+    .obj-list li:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+    .obj-list li::before {
+      content: counter(obj, decimal-leading-zero);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .obj-list li strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ===== INTERACTIVE TIMELINE ROADMAP ===== */
+    .timeline-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 16px;
+    }
+    .timeline-tab {
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 16px 20px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid transparent;
+    }
+    .timeline-tab:hover {
+      background: var(--bg-2);
+    }
+    .timeline-tab.active {
+      background: var(--paper);
+      border-color: var(--rule-soft);
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+    body.dark-theme .timeline-tab.active {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .timeline-tab.active .p-num {
+      color: var(--accent);
+    }
+    .timeline-tab .p-num {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .timeline-tab .p-title {
+      display: block;
+      font-family: var(--serif);
+      font-size: clamp(16px, 1.5vw, 20px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .timeline-tab .p-weeks {
+      display: block;
+      font-size: 12px;
+      color: var(--ink-mute);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    
+    .timeline-content {
+      background: var(--paper);
+      border: 1px solid var(--rule-soft);
+      border-radius: 8px;
+      padding: 36px;
+      min-height: 280px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+    }
+    body.dark-theme .timeline-content {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    .phase-detail {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .phase-detail.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .phase-heading {
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .acts {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+    .acts li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 14px;
+      font-size: 15.5px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+    .acts li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 10px;
+    }
+    .acts li strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ===== PILOT CONCEPTS ===== */
+    .concepts-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .concept-tab-btn {
+      flex: 1;
+      background: var(--bg-2);
+      border: 1px solid var(--rule-soft);
+      padding: 16px 20px;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    .concept-tab-btn:hover {
+      background: var(--rule-soft);
+    }
+    .concept-tab-btn.active {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-color: var(--accent);
+    }
+    
+    .concepts-content {
+      background: var(--paper);
+      border: 1px solid var(--rule-soft);
+      border-radius: 8px;
+      padding: 36px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+    }
+    body.dark-theme .concepts-content {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    .concept-panel {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .concept-panel.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .concept-panel h3 {
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--ink);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .concept-panel p.concept-intro {
+      font-size: 15.5px;
+      color: var(--ink-soft);
+      margin-bottom: 24px;
+    }
+    
+    .concept-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .concept-col {
+      background: var(--bg-2);
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid var(--rule-soft);
+    }
+    .concept-col.highlighted {
+      border: 2px solid var(--gold);
+      background: var(--paper);
+      position: relative;
+    }
+    .concept-col.highlighted::after {
+      content: "RECOMMENDED BY CPI";
+      position: absolute;
+      top: -12px;
+      right: 16px;
+      background: var(--gold);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+    .concept-col h4 {
+      font-family: var(--serif);
+      font-size: 19px;
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .concept-col ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+    .concept-col ul li {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 10px;
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+    .concept-col ul li::before {
+      content: "—";
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .concept-col ul li em {
+      font-size: 13.5px;
+      color: var(--ink-mute);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .matrix-container {
+      margin-top: 48px;
+    }
+    .matrix-container h4 {
+      font-family: var(--serif);
+      font-size: 20px;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .matrix-table td.highlight {
+      background: color-mix(in oklab, var(--accent) 5%, transparent);
+      font-weight: 600;
+      color: var(--accent);
+    }
+    body.dark-theme .matrix-table td.highlight {
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    /* ===== DELIVERABLES LIST ===== */
+    .deliverables-list {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+      border-top: 1px solid var(--rule);
+      padding-top: 24px;
+    }
+    .deliverables-list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 16px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+    .deliverables-list li svg {
+      width: 20px;
+      height: 20px;
+      color: var(--accent);
+      margin-top: 3px;
+    }
+    .deliverables-list li strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ===== SIGN OFF WIDGET ===== */
+    .signoff-widget {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
+      margin-block: 40px;
+    }
+    body.dark-theme .signoff-widget {
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+    .signoff-widget h3 {
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .signoff-note {
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label.group-title {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+    .form-group input[type="text"]:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .radio-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+    }
+    .radio-label input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .status-badge {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      color: var(--ink-soft);
+      background: var(--bg-2);
+    }
+    .radio-label input:checked + .status-badge.approved {
+      border-color: #166534;
+      background: #dcfce7;
+      color: #166534;
+    }
+    body.dark-theme .radio-label input:checked + .status-badge.approved {
+      border-color: #4ade80;
+      background: #064e3b;
+      color: #86efac;
+    }
+    .radio-label input:checked + .status-badge.notes {
+      border-color: #854d0e;
+      background: #fef9c3;
+      color: #854d0e;
+    }
+    body.dark-theme .radio-label input:checked + .status-badge.notes {
+      border-color: #fde047;
+      background: #451a03;
+      color: #fde047;
+    }
+    .radio-label input:checked + .status-badge.discuss {
+      border-color: #991b1b;
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    body.dark-theme .radio-label input:checked + .status-badge.discuss {
+      border-color: #fca5a5;
+      background: #450a0a;
+      color: #fca5a5;
+    }
+    .btn-submit {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border: none;
+      padding: 16px 32px;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-submit:hover {
+      background: color-mix(in oklab, var(--accent) 85%, black);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .comments-section {
+      margin-top: 40px;
+      border-top: 1px solid var(--rule);
+      padding-top: 32px;
+    }
+    .comments-section h4 {
+      font-family: var(--serif);
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .comments-list {
+      display: grid;
+      gap: 16px;
+    }
+    .comment-card {
+      background: var(--bg-2);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--rule-soft);
+      margin-bottom: 12px;
+      animation: commentFadeIn 0.5s ease;
+    }
+    .comment-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .comment-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .comment-card .status-badge {
+      display: inline-block;
+      width: auto;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+    .comment-text {
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      white-space: pre-wrap;
+      margin-bottom: 0;
+    }
+    .comment-date {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--ink-mute);
+      text-align: right;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+    
+    @keyframes commentFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== FLOATING THEME TOGGLE ===== */
+    .theme-toggle-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 200;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--accent-ink);
+      border: 1px solid var(--rule-soft);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .theme-toggle-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    .theme-toggle-btn .sun-icon {
+      display: none;
+      width: 22px;
+      height: 22px;
+    }
+    .theme-toggle-btn .moon-icon {
+      display: block;
+      width: 22px;
+      height: 22px;
+    }
+    body.dark-theme .theme-toggle-btn .sun-icon {
+      display: block;
+    }
+    body.dark-theme .theme-toggle-btn .moon-icon {
+      display: none;
+    }
+
+    /* ===== FOOTER ===== */
+    .foot {
+      padding-block: 64px 80px;
+      border-top: 1px solid var(--rule);
+      background: var(--bg-2);
+      transition: background 0.3s ease;
+    }
+    .foot-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .foot-bar .meta {
+      font-size: 14px;
+      color: var(--ink-mute);
+      margin-bottom: 0;
+    }
+    .foot-contact {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+    }
+    .foot-contact a {
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .foot-contact a:hover {
+      color: var(--accent);
+    }
+    .foot-contact svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ===== RESPONSIVE MEDIA QUERIES ===== */
+    @media (max-width: 900px) {
+      .doc-meta {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      .psection-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .psection-num {
+        position: relative;
+        top: 0;
+      }
+      .timeline-nav {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .radio-group {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .topbar .shell {
+        height: 64px;
+      }
+      .nav-toggle {
+        display: flex;
+      }
+      .topnav {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--rule);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px var(--gutter);
+        display: none;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+      }
+      .topnav.open {
+        display: flex;
+      }
+      .topnav a {
+        padding: 12px 16px;
+        border-radius: 0;
+        border-bottom: 1px solid var(--rule-soft);
+      }
+      .topnav a:last-child {
+        border-bottom: none;
+      }
+      .doc-head {
+        padding-block: 88px 64px;
+      }
+      .psection {
+        padding-block: 64px;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .concept-split {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .concepts-tabs {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .doc-meta {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .doc-title {
+        font-size: clamp(30px, 9vw, 44px);
+      }
+      .timeline-content, .concepts-content, .signoff-widget {
+        padding: 24px 20px;
+      }
+      .obj-list li {
+        grid-template-columns: 40px 1fr;
+        gap: 16px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =================== DYNAMIC FLOATING THEME TOGGLE =================== -->
+  <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+    <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+
+  <!-- =================== TOP BAR =================== -->
+  <header class="topbar">
+    <div class="shell">
+      <a class="brand" href="#overview">
+        <span class="logo-symbol">C</span>
+        <span>CPI <span style="font-family: var(--sans); font-size:12px; font-weight:700; color:var(--ink-mute); vertical-align: middle;">· VLU PROPOSAL</span></span>
+      </a>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="topnav" aria-label="Open Navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="topnav" id="topnav">
+        <a href="#overview">Overview</a>
+        <a href="#objectives">Objectives</a>
+        <a href="#roadmap">Timeline</a>
+        <a href="#concepts">Pilot Concepts</a>
+        <a href="#deliverables">Deliverables</a>
+        <a href="#signoff" style="border: 1px solid var(--accent); color: var(--accent); font-weight:600;">Sign-off</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =================== DOC HEAD / HERO =================== -->
+    <section class="doc-head">
+      <div class="shell">
+        <div class="doc-meta">
+          <div class="cell">
+            <span class="l">Client</span>
+            <span class="v">Board of Directors<br/><strong>Van Lang University (VLU)</strong></span>
+          </div>
+          <div class="cell">
+            <span class="l">Proposed By</span>
+            <span class="v">Career Services & Partnerships<br/><em>Career Partnership Initiative (CPI)</em></span>
+          </div>
+          <div class="cell">
+            <span class="l">Date of Proposal</span>
+            <span class="v">May 23, 2026<br/><span style="font-family: var(--mono); font-size: 13px;">Version 1.0 (Draft for Review)</span></span>
+          </div>
+        </div>
+        <h1 class="doc-title">
+          Reimagining Career Services & Employability<em>Helping VLUers own their careers from Day 1</em>
+        </h1>
+      </div>
+    </section>
+
+    <!-- =================== 01 OVERVIEW / OBSERVATION =================== -->
+    <section class="psection shell" id="overview">
+      <div class="psection-grid">
+        <div class="psection-num">
+          <div class="n">01</div>
+          <h2>Context &<br/><em>Observations</em></h2>
+        </div>
+        <div class="overview">
+          <p>
+            Van Lang University is looking for a holistic approach to support learners to own their careers from Day 1. However, our findings and employer hiring trends show that the entry-level hiring landscape poses unique challenges for candidates in Vietnam.
+          </p>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-num" data-val="23">0%</div>
+              <div class="stat-label">Employers expect entry-level candidates to have relevant industry experiences.</div>
+              <div class="stat-bar"><div class="stat-bar-fill" data-width="23%"></div></div>
+            </div>
+            <div class="stat-card highlighted">
+              <div class="stat-num" data-val="63">0%</div>
+              <div class="stat-label">Employers highly value extra-curricular activities or part-time job experiences.</div>
+              <div class="stat-bar"><div class="stat-bar-fill" data-width="63%"></div></div>
+            </div>
+          </div>
+
+          <p>
+            Although experiences are highly valued, top-tier entry-level hiring in Vietnam is still heavily influenced by university brand names:
+          </p>
+
+          <div class="case-study-box">
+            <h4>The Hard Truth</h4>
+            <p>
+              "A candidate from HUST (Hanoi University of Science and Technology) with a 3.8 GPA was shortcutted directly to the interview phase in the middle of the hiring process and landed the only intern position at VNG, purely based on their university brand."
+            </p>
+          </div>
+
+          <p style="margin-top: 32px;">
+            To improve student employability, typical international models like Columbia and Drexel are often referenced, but they share different contexts when applied to Vietnam:
+          </p>
+
+          <div class="table-container">
+            <table class="editorial-table">
+              <thead>
+                <tr>
+                  <th>Reference Model</th>
+                  <th>Context & Characteristics</th>
+                  <th>Feasibility for VLU & VN Context</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>TC Columbia Model</strong></td>
+                  <td>Ivy League reputation. Large corporations establish exclusive hiring pipelines for Ivy schools, bypassing standard applications.</td>
+                  <td class="negative"><strong>Low Feasibility</strong> - Brand dynamics and employer networks are vastly different in Vietnam.</td>
+                </tr>
+                <tr>
+                  <td><strong>Drexel Co-op Model</strong></td>
+                  <td>Manageable co-op scale (~5,000 students/year). U.S. GDP is 62 times higher than Vietnam, promising abundant job opportunities.</td>
+                  <td class="negative"><strong>Low Feasibility</strong> - Mandatory long-term internships are difficult to scale within current VLU schedules and local market capacity.</td>
+                </tr>
+                <tr>
+                  <td><strong>Beyond "Co-op" (CPI Proposed)</strong></td>
+                  <td>Every experience counts (clubs, part-time jobs, and short-term project simulations). Helps students build talent pools.</td>
+                  <td class="positive"><strong>Highly Feasible</strong> - Fully aligns with VLU's academic strengths, local employers, and Vietnam's entry-level hiring timeline.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p style="margin-top: 16px;">
+            Therefore, our recommendation is to <strong>think beyond traditional "co-op"</strong> models. Every experience counts for employers, meaning clubs and part-time jobs make complete sense; combining them with job simulations and externships will help students understand real jobs and successfully enter companies' talent pools.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 02 OBJECTIVES =================== -->
+    <section class="psection shell" id="objectives">
+      <div class="psection-grid">
+        <div class="psection-num">
+          <div class="n">02</div>
+          <h2>Project<br/><em>Objectives</em></h2>
+        </div>
+        <div>
+          <p class="lede" style="font-family: var(--serif); font-size: 21px; margin-bottom: 32px; color: var(--ink);">
+            We apply a human-centered design lens to achieve five core objectives for Van Lang University:
+          </p>
+          <ol class="obj-list">
+            <li><strong>Reimagine career services & competency development:</strong> Apply a human-centered design lens to shift career offices from passive services to active student launchpads.</li>
+            <li><strong>Establish expected competency standards:</strong> Define a clear picture of employer-expected competencies for entry-level hires, informed by leading national and global frameworks.</li>
+            <li><strong>Audit VLU student positioning:</strong> Review where Van Lang students stand — what they bring, what's missing, and how current services measure up.</li>
+            <li><strong>Design context-sensitive solutions:</strong> Develop a customized model that addresses the employability gap facing Van Lang students in the local market.</li>
+            <li><strong>Deliver a Minimum Viable Product (MVP):</strong> Hand over a functional prototype ready for pilot testing and rapid iteration in the coming semesters.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 03 SCOPE & TIMELINE =================== -->
+    <section class="psection shell" id="roadmap">
+      <div class="psection-grid">
+        <div class="psection-num">
+          <div class="n">03</div>
+          <h2>Scope &<br/><em>Timeline</em></h2>
+        </div>
+        <div>
+          <p style="margin-bottom: 32px; color: var(--ink-soft);">
+            The project is planned to span **24 weeks**, structured across four sequential phases. Click on each phase below to see specific tasks and activities:
+          </p>
+          
+          <!-- Timeline Tabs -->
+          <div class="timeline-nav">
+            <button class="timeline-tab active" data-phase="1">
+              <span class="p-num">Phase 1</span>
+              <span class="p-title">Research</span>
+              <span class="p-weeks">Weeks 1 - 6</span>
+            </button>
+            <button class="timeline-tab" data-phase="2">
+              <span class="p-num">Phase 2</span>
+              <span class="p-title">Ideation</span>
+              <span class="p-weeks">Weeks 7 - 12</span>
+            </button>
+            <button class="timeline-tab" data-phase="3">
+              <span class="p-num">Phase 3</span>
+              <span class="p-title">Prototype</span>
+              <span class="p-weeks">Weeks 12 - 18</span>
+            </button>
+            <button class="timeline-tab" data-phase="4">
+              <span class="p-num">Phase 4</span>
+              <span class="p-title">Pilot</span>
+              <span class="p-weeks">Weeks 19 - 24</span>
+            </button>
+          </div>
+
+          <!-- Phase Content -->
+          <div class="timeline-content">
+            <!-- Phase 1 -->
+            <div class="phase-detail active" id="phase-1">
+              <h3 class="phase-heading">Labor Market Scan & VLU Insights (Weeks 1 - 6)</h3>
+              <ul class="acts">
+                <li><div><strong>Labor market scan:</strong> Map Vietnam employer demand for entry-level hires across key industries, reviewing national frameworks (NVQF) and regional signals (ASEAN, global).</div></li>
+                <li><div><strong>Van Lang insights:</strong> Map the current student journey, auditing existing career programs, resources, staffing, and reach.</div></li>
+                <li><div><strong>Employer survey:</strong> Conduct structured interviews and surveys with HCMC employers and HR leads to identify VLU students' employability gaps.</div></li>
+                <li><div><strong>University benchmarking:</strong> Identify career service models applicable to a private Vietnamese university context from leading universities worldwide.</div></li>
+              </ul>
+            </div>
+            
+            <!-- Phase 2 -->
+            <div class="phase-detail" id="phase-2">
+              <h3 class="phase-heading">Co-design & Ideation (Weeks 7 - 12)</h3>
+              <ul class="acts">
+                <li><div><strong>Co-design workshops:</strong> Facilitate collaborative design sessions with students, career advisors, and target employers.</div></li>
+                <li><div><strong>Rapid prototyping:</strong> Ideate and develop a minimum of 2 separate idea options.</div></li>
+                <li><div><strong>Concept evaluation:</strong> Assess each concept against impact, relevance, feasibility, and scalability. Shortlist 1 core idea.</div></li>
+                <li><div><strong>Leadership sign-off:</strong> Present the shortlisted concept to university leadership for final approval and strategic sign-off.</div></li>
+              </ul>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="phase-detail" id="phase-3">
+              <h3 class="phase-heading">Prototype Development & Testing (Weeks 12 - 18)</h3>
+              <ul class="acts">
+                <li><div><strong>Build MVP:</strong> Create a minimum viable prototype of the selected solution (digital tool, training module, coaching framework, or combination).</div></li>
+                <li><div><strong>Develop supporting materials:</strong> Create facilitator guides, student-facing materials, and initial platform wireframes.</div></li>
+                <li><div><strong>Internal testing & iteration:</strong> Test the prototype with a small group of students/advisors; collect feedback and iterate (at least 1 revision cycle).</div></li>
+                <li><div><strong>Pilot preparation:</strong> Define the cohort size, participating departments, timeline, success metrics, and logistical tools.</div></li>
+              </ul>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="phase-detail" id="phase-4">
+              <h3 class="phase-heading">Pilot Delivery & Evaluation (Weeks 19 - 24)</h3>
+              <ul class="acts">
+                <li><div><strong>Pilot delivery:</strong> Run the pilot with the defined student cohort, facilitating sessions, activating digital tools, and supporting university staff.</div></li>
+                <li><div><strong>Data collection:</strong> Gather quantitative data (participation rates, competency self-assessments) and qualitative feedback (advisor notes).</div></li>
+                <li><div><strong>Pilot evaluation:</strong> Analyze results against defined success metrics to identify what worked, what failed, and prepare recommendations for rollout.</div></li>
+                <li><div><strong>Presentation to leadership:</strong> Package findings and recommendations for university board review.</div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 04 PILOT CONCEPTS =================== -->
+    <section class="psection shell" id="concepts">
+      <div class="psection-grid">
+        <div class="psection-num">
+          <div class="n">04</div>
+          <h2>Pilot<br/><em>Concepts</em></h2>
+        </div>
+        <div>
+          <p style="margin-bottom: 32px; color: var(--ink-soft);">
+            Three pilot concepts have been designed to explore different levels of career support. Select a tab to see their details:
+          </p>
+
+          <!-- Concept Tabs -->
+          <div class="concepts-tabs">
+            <button class="concept-tab-btn active" data-concept="1">Concept 1: Hybrid AI & Elite Honors</button>
+            <button class="concept-tab-btn" data-concept="2">Concept 2: Job Simulation Hub</button>
+            <button class="concept-tab-btn" data-concept="3">Concept 3: One-stop Career App</button>
+          </div>
+
+          <!-- Concept Panels -->
+          <div class="concepts-content">
+            <!-- Concept 1 -->
+            <div class="concept-panel active" id="concept-1">
+              <h3>Hybrid Model: AI CV Reviewer for Mass + Honors Coaching for Top 5% Elite</h3>
+              <p class="concept-intro">This is the <strong>highly recommended solution by CPI</strong>, combining automated scale with high-impact selective mentoring.</p>
+              
+              <div class="concept-split">
+                <div class="concept-col">
+                  <h4>For Mass Students</h4>
+                  <ul>
+                    <li><strong>AI CV Reviewer:</strong> Online platform giving students instant, actionable feedback on Resumes, Cover Letters, and Portfolios, aligned with local employers' ATS criteria.</li>
+                    <li><strong>On-demand Learning:</strong> Interactive video courses and resources covering resume writing, LinkedIn optimization, networking, and interview readiness.</li>
+                    <li><em>Case studies: Wonsulting (AI), Coursera (E-learning).</em></li>
+                  </ul>
+                </div>
+                <div class="concept-col highlighted">
+                  <h4>For Elite Students (Top 5%)</h4>
+                  <ul>
+                    <li><strong>1-1 Mentoring:</strong> Personalized mock interviews and advanced resume polishing with senior industry recruiters.</li>
+                    <li><strong>Honors Program:</strong> Interactive workshops on Systems Thinking, workplace AI usage, and solving real corporate case studies.</li>
+                    <li><strong>Direct Referrals:</strong> Fast-track introduction to top-tier employer partners for premium internship and management trainee roles.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Concept 2 -->
+            <div class="concept-panel" id="concept-2">
+              <h3>Job Simulation Platform & RMIT-style 1-1 Career Consultations</h3>
+              <p class="concept-intro">Focuses on bridging the theory-practice gap with task simulations and professional in-office counseling.</p>
+              
+              <div class="concept-split">
+                <div class="concept-col">
+                  <h4>Job Simulation Platform</h4>
+                  <ul>
+                    <li><strong>Simulated Work Tasks:</strong> Partner with employers to build short, online task simulations (3-5 hours) mirroring daily duties of roles like Marketing Executive or Data Analyst.</li>
+                    <li><strong>Talent Pooling:</strong> Employers automatically receive a validated pool of students who demonstrate interest and competency.</li>
+                    <li><em>Case study: The Forage.</em></li>
+                  </ul>
+                </div>
+                <div class="concept-col">
+                  <h4>1-1 Career Consultations</h4>
+                  <ul>
+                    <li><strong>Pre-booked Consultations:</strong> Schedule 1-1 sessions with professional counselors at the career service office.</li>
+                    <li><strong>Career Planning:</strong> Individualized guidance for resume roadblocks, salary negotiation, and career path decisions.</li>
+                    <li><em>Case studies: RMIT University, Fulbright University.</em></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Concept 3 -->
+            <div class="concept-panel" id="concept-3">
+              <h3>Career Management App - One-Stop Employability Hub</h3>
+              <p class="concept-intro">A mobile-first portal digitizing all internship opportunities, guides, and networks for VLU students.</p>
+              
+              <div class="concept-split">
+                <div class="concept-col">
+                  <h4>Opportunity Hub</h4>
+                  <ul>
+                    <li><strong>Integrated Job Board:</strong> Curated board for internships and entry-level positions where companies post and students apply directly.</li>
+                    <li><strong>Resume & Profile Sync:</strong> Syncs with VLU academic records, allowing companies to search candidates based on GPA, department, and skills.</li>
+                  </ul>
+                </div>
+                <div class="concept-col">
+                  <h4>Cẩm nang & Alumni Network</h4>
+                  <ul>
+                    <li><strong>Skill Guides:</strong> Short blog posts, templates, and video bytes on resume preparation and interview tips.</li>
+                    <li><strong>Alumni Directory:</strong> Information hub of active VLU alumni, fostering mentor-mentee connections and referrals.</li>
+                    <li><em>Case studies: Handshake, Kinobi.</em></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comparison Matrix -->
+          <div class="matrix-container">
+            <h4>Concept Comparison Matrix</h4>
+            <div class="table-container">
+              <table class="editorial-table matrix-table">
+                <thead>
+                  <tr>
+                    <th>Evaluation Criteria</th>
+                    <th>Concept 1 (Hybrid - Recommended)</th>
+                    <th>Concept 2 (Job Sim Hub)</th>
+                    <th>Concept 3 (One-stop Career App)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Student Impact</strong></td>
+                    <td class="highlight">High (Automated mass scale + Elite personal coaching)</td>
+                    <td>Medium-High (Focused on simulated experiences)</td>
+                    <td>Medium (Focused on informational access)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>VLU Feasibility</strong></td>
+                    <td class="highlight">Very High (Leverages current data pipelines)</td>
+                    <td>Medium (Requires custom simulation task design)</td>
+                    <td>Medium (High initial software development costs)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Operational Cost</strong></td>
+                    <td class="highlight">Optimal (AI automation handles the mass cohort)</td>
+                    <td>High (Simulation content licensing costs)</td>
+                    <td>Low (Standard app maintenance post-development)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Scalability</strong></td>
+                    <td class="highlight">Infinite (AI tool serves tens of thousands 24/7)</td>
+                    <td>Medium (Dependent on participating employers)</td>
+                    <td>High (Fully digital App architecture)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 05 DELIVERABLES =================== -->
+    <section class="psection shell" id="deliverables">
+      <div class="psection-grid">
+        <div class="psection-num">
+          <div class="n">05</div>
+          <h2>Project<br/><em>Deliverables</em></h2>
+        </div>
+        <div>
+          <p style="margin-bottom: 24px; color: var(--ink-soft);">
+            At the end of the engagement, CPI will deliver the following board-ready playbook and core frameworks:
+          </p>
+          <ul class="deliverables-list">
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <div><strong>Foundational career knowledge & skills training framework:</strong> Standardized guidelines and materials for CV and cover letter preparation.</div>
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <div><strong>Key competencies training curriculum:</strong> Modules covering critical thinking, problem solving, and effective communication.</div>
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <div><strong>AI skills training program:</strong> Guidelines on leveraging Generative AI tools for schoolwork and office productivity.</div>
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <div><strong>Honors program playbook:</strong> Selection criteria and operational guides for selective 1-1 coaching and recruitment events.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 06 SIGN OFF WIDGET =================== -->
+    <section class="psection shell" id="signoff">
+      <div class="psection-grid">
+        <div class="psection-num">
+          <div class="n">06</div>
+          <h2>Proposal<br/><em>Sign-Off</em></h2>
+        </div>
+        <div>
+          <div class="signoff-widget">
+            <h3>Proposal Feedback &amp; Sign-Off Board</h3>
+            <p class="signoff-note">
+              VLU Board of Directors and advisors may leave feedback or demo approvals below (interactive data is saved in your local browser).
+            </p>
+            
+            <form id="signoff-form">
+              <div class="form-group">
+                <label class="group-title" for="sign-name">Full Name of Board Member</label>
+                <input type="text" id="sign-name" placeholder="e.g., Prof. Dr. Nguyen Van A" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="group-title">Approval Status</label>
+                <div class="radio-group">
+                  <label class="radio-label">
+                    <input type="radio" name="sign-status" value="Approved" checked>
+                    <span class="status-badge approved">Approve Completely</span>
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="sign-status" value="Approved-Notes">
+                    <span class="status-badge notes">Approve with Conditions</span>
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="sign-status" value="Discuss">
+                    <span class="status-badge discuss">Needs Discussion</span>
+                  </label>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="group-title" for="sign-comment">Detailed Feedback or Notes</label>
+                <textarea id="sign-comment" rows="4" placeholder="Enter your comments or required tweaks for the proposal..." required></textarea>
+              </div>
+              
+              <button type="submit" class="btn-submit">Submit Feedback &amp; Confirm Approval</button>
+            </form>
+
+            <div class="comments-section">
+              <h4>Board Feedback Log</h4>
+              <div class="comments-list" id="comments-list">
+                <!-- Comments generated by Javascript -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =================== FOOTER =================== -->
+  <footer class="foot">
+    <div class="shell foot-bar">
+      <p class="meta">© 2026 · Career Partnership Initiative (CPI) proposal for VLU</p>
+      <ul class="foot-contact">
+        <li>
+          <a href="mailto:careers@vlu.edu.vn" title="Email Us">
+            <span style="display:none">Email</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+              <path d="M3 7.5l9 6.5 9-6.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://vanlanguni.edu.vn" target="_blank" rel="noopener" title="VLU Website">
+            <span style="display:none">Website</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M3 12h18"/>
+              <path d="M12 3c2.8 2.8 4.5 6.5 4.5 9s-1.7 6.2-4.5 9M12 3c-2.8 2.8-4.5 6.5-4.5 9s1.7 6.2 4.5 9"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- =================== JAVASCRIPT =================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. MOBILE NAV MENU TOGGLE
+      const navToggle = document.getElementById("nav-toggle");
+      const topnav = document.getElementById("topnav");
+      
+      if (navToggle && topnav) {
+        navToggle.addEventListener("click", () => {
+          const isOpen = topnav.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", isOpen);
+          const spans = navToggle.querySelectorAll("span");
+          if (isOpen) {
+            spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+            spans[1].style.opacity = "0";
+            spans[2].style.transform = "rotate(-45deg) translate(5px, -5px)";
+          } else {
+            spans[0].style.transform = "none";
+            spans[1].style.opacity = "1";
+            spans[2].style.transform = "none";
+          }
+        });
+
+        topnav.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            topnav.classList.remove("open");
+            const spans = navToggle.querySelectorAll("span");
+            spans[0].style.transform = "none";
+            spans[1].style.opacity = "1";
+            spans[2].style.transform = "none";
+          });
+        });
+      }
+
+      // 2. THEME SWITCHER (DARK/LIGHT MODE)
+      const themeToggle = document.getElementById("theme-toggle");
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          document.body.classList.toggle("dark-theme");
+          const isDark = document.body.classList.contains("dark-theme");
+          localStorage.setItem("vlu-proposal-theme", isDark ? "dark" : "light");
+        });
+        
+        const savedTheme = localStorage.getItem("vlu-proposal-theme");
+        if (savedTheme === "dark") {
+          document.body.classList.add("dark-theme");
+        }
+      }
+
+      // 3. ANIMATED PERCENTAGE STATS ON SCROLL
+      const statCards = document.querySelectorAll(".stat-card");
+      const animateStats = () => {
+        statCards.forEach(card => {
+          const numEl = card.querySelector(".stat-num");
+          const barEl = card.querySelector(".stat-bar-fill");
+          if (!numEl || card.classList.contains("animated")) return;
+          
+          const rect = card.getBoundingClientRect();
+          const inView = (rect.top < window.innerHeight - 50 && rect.bottom > 0);
+          
+          if (inView) {
+            card.classList.add("animated");
+            const targetVal = parseInt(numEl.getAttribute("data-val"), 10);
+            
+            const barWidth = barEl.getAttribute("data-width");
+            barEl.style.width = barWidth;
+            
+            let start = 0;
+            const duration = 1200; // ms
+            const stepTime = Math.abs(Math.floor(duration / targetVal));
+            const timer = setInterval(() => {
+              start++;
+              numEl.textContent = start + "%";
+              if (start >= targetVal) {
+                clearInterval(timer);
+              }
+            }, stepTime);
+          }
+        });
+      };
+      
+      window.addEventListener("scroll", animateStats);
+      animateStats();
+
+      // 4. INTERACTIVE TIMELINE ROADMAP
+      const timelineTabs = document.querySelectorAll(".timeline-tab");
+      const phaseDetails = document.querySelectorAll(".phase-detail");
+      
+      timelineTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          const targetPhase = tab.getAttribute("data-phase");
+          
+          timelineTabs.forEach(t => t.classList.remove("active"));
+          tab.classList.add("active");
+          
+          phaseDetails.forEach(detail => {
+            detail.classList.remove("active");
+            if (detail.getAttribute("id") === `phase-${targetPhase}`) {
+              void detail.offsetWidth;
+              detail.classList.add("active");
+            }
+          });
+        });
+      });
+
+      // 5. INTERACTIVE PILOT CONCEPTS
+      const conceptTabs = document.querySelectorAll(".concept-tab-btn");
+      const conceptPanels = document.querySelectorAll(".concept-panel");
+      
+      conceptTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          const targetConcept = tab.getAttribute("data-concept");
+          
+          conceptTabs.forEach(t => t.classList.remove("active"));
+          tab.classList.add("active");
+          
+          conceptPanels.forEach(panel => {
+            panel.classList.remove("active");
+            if (panel.getAttribute("id") === `concept-${targetConcept}`) {
+              void panel.offsetWidth;
+              panel.classList.add("active");
+            }
+          });
+        });
+      });
+
+      // 6. SCROLL SPY - HIGHLIGHT ACTIVE Navigation
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".topnav a");
+      
+      const scrollSpy = () => {
+        const scrollPos = window.scrollY + 120;
+        
+        sections.forEach(sec => {
+          const id = sec.getAttribute("id");
+          const top = sec.offsetTop;
+          const height = sec.offsetHeight;
+          
+          if (scrollPos >= top && scrollPos < top + height) {
+            navLinks.forEach(link => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      };
+      
+      window.addEventListener("scroll", scrollSpy);
+      scrollSpy();
+
+      // 7. SIGN-OFF WIDGET WITH LOCALSTORAGE
+      const defaultComments = [
+        {
+          name: "Prof. Dr. Nguyen Van A (Vice President)",
+          status: "Approved-Notes",
+          comment: "The proposed hybrid model is highly practical. The focus on AI CV review for the mass cohort is timely. We should emphasize communications so students adopt the tool early in the Prototype phase.",
+          date: "23/05/2026 10:15"
+        },
+        {
+          name: "Dr. Tran Thi B (Director of Corporate Partnerships)",
+          status: "Approved",
+          comment: "The Drexel and Columbia comparison is highly accurate. For the Vietnamese market, this flexible 'Beyond Co-op' model is the most suitable. Corporate partners will welcome students trained in System Thinking.",
+          date: "23/05/2026 11:30"
+        }
+      ];
+
+      const initComments = () => {
+        let comments = localStorage.getItem("vlu_proposal_comments");
+        if (!comments) {
+          localStorage.setItem("vlu_proposal_comments", JSON.stringify(defaultComments));
+          comments = JSON.stringify(defaultComments);
+        }
+        renderComments(JSON.parse(comments));
+      };
+
+      const renderComments = (list) => {
+        const container = document.getElementById("comments-list");
+        if (!container) return;
+        
+        if (list.length === 0) {
+          container.innerHTML = '<p style="font-style: italic; color: var(--ink-mute);">No feedback submitted yet.</p>';
+          return;
+        }
+        
+        container.innerHTML = list.map(item => {
+          let badgeText = "";
+          let badgeClass = "";
+          if (item.status === "Approved") {
+            badgeText = "Approved";
+            badgeClass = "approved";
+          } else if (item.status === "Approved-Notes") {
+            badgeText = "Approved with Conditions";
+            badgeClass = "notes";
+          } else if (item.status === "Discuss") {
+            badgeText = "Needs Discussion";
+            badgeClass = "discuss";
+          }
+          
+          return `
+            <div class="comment-card">
+              <div class="comment-meta">
+                <span class="comment-name">${escapeHtml(item.name)}</span>
+                <span class="status-badge ${badgeClass}">${badgeText}</span>
+              </div>
+              <p class="comment-text">${escapeHtml(item.comment)}</p>
+              <div class="comment-date">${item.date}</div>
+            </div>
+          `;
+        }).join("");
+      };
+
+      const escapeHtml = (text) => {
+        const map = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        };
+        return text.replace(/[&<>"']/g, m => map[m]);
+      };
+
+      const form = document.getElementById("signoff-form");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const nameInput = document.getElementById("sign-name");
+          const commentInput = document.getElementById("sign-comment");
+          const statusInput = document.querySelector('input[name="sign-status"]:checked');
+          
+          if (!nameInput || !commentInput || !statusInput) return;
+          
+          const name = nameInput.value.trim();
+          const comment = commentInput.value.trim();
+          const status = statusInput.value;
+          
+          if (!name || !comment) return;
+          
+          const now = new Date();
+          const dateStr = now.toLocaleDateString("en-US") + " " + now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+          
+          const newComment = { name, status, comment, date: dateStr };
+          
+          let list = JSON.parse(localStorage.getItem("vlu_proposal_comments") || "[]");
+          list.unshift(newComment);
+          localStorage.setItem("vlu_proposal_comments", JSON.stringify(list));
+          
+          renderComments(list);
+          
+          nameInput.value = "";
+          commentInput.value = "";
+        });
+      }
+
+      initComments();
+    });
+  </script>
+</body>
+</html>
