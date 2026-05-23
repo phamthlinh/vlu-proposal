@@ -538,6 +538,9 @@
       color: var(--ink);
       font-weight: 600;
     }
+    .obj-list li div {
+      grid-column: 2; /* Forces content to align correctly under the grid column */
+    }
 
     /* ===== INTERACTIVE TIMELINE ROADMAP ===== */
     .timeline-nav {
@@ -773,6 +776,9 @@
       color: var(--accent);
       font-weight: bold;
     }
+    .concept-col ul li div {
+      grid-column: 2; /* Prevents narrow vertical wrapping bug */
+    }
     .concept-col ul li em {
       font-size: 13.5px;
       color: var(--ink-mute);
@@ -825,241 +831,90 @@
       font-weight: 600;
     }
 
-    /* ===== SIGN OFF WIDGET ===== */
-    .signoff-widget {
+    /* ===== BOARD OF ADVISORS GRID ===== */
+    .advisors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .advisor-card {
       background: var(--paper);
-      border: 1px solid var(--rule);
-      padding: 40px;
+      border: 1px solid var(--rule-soft);
       border-radius: 8px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
-      margin-block: 40px;
-    }
-    body.dark-theme .signoff-widget {
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    }
-    .signoff-widget h3 {
-      font-family: var(--serif);
-      font-size: 24px;
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-    .signoff-note {
-      font-size: 14.5px;
-      color: var(--ink-soft);
-      margin-bottom: 28px;
-    }
-    .form-group {
-      margin-bottom: 24px;
-    }
-    .form-group label.group-title {
-      display: block;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-    .form-group input[type="text"],
-    .form-group textarea {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid var(--rule);
-      border-radius: 6px;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 15px;
-      transition: all 0.3s ease;
-    }
-    .form-group input[type="text"]:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent);
-      outline: none;
-      box-shadow: 0 0 0 3px var(--accent-soft);
-    }
-    .radio-group {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 10px;
-    }
-    .radio-label {
+      padding: 24px 20px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      cursor: pointer;
-      position: relative;
-    }
-    .radio-label input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
-    .status-badge {
-      display: block;
-      width: 100%;
       text-align: center;
-      padding: 12px;
-      font-size: 13.5px;
-      font-weight: 600;
-      border-radius: 6px;
-      border: 2px solid transparent;
-      transition: all 0.3s ease;
-      color: var(--ink-soft);
-      background: var(--bg-2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
     }
-    .radio-label input:checked + .status-badge.approved {
-      border-color: #166534;
-      background: #dcfce7;
-      color: #166534;
+    body.dark-theme .advisor-card {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
     }
-    body.dark-theme .radio-label input:checked + .status-badge.approved {
-      border-color: #4ade80;
-      background: #064e3b;
-      color: #86efac;
+    .advisor-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(153, 27, 27, 0.06);
     }
-    .radio-label input:checked + .status-badge.notes {
-      border-color: #854d0e;
-      background: #fef9c3;
-      color: #854d0e;
+    body.dark-theme .advisor-card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
     }
-    body.dark-theme .radio-label input:checked + .status-badge.notes {
-      border-color: #fde047;
-      background: #451a03;
-      color: #fde047;
-    }
-    .radio-label input:checked + .status-badge.discuss {
-      border-color: #991b1b;
-      background: #fee2e2;
-      color: #991b1b;
-    }
-    body.dark-theme .radio-label input:checked + .status-badge.discuss {
-      border-color: #fca5a5;
-      background: #450a0a;
-      color: #fca5a5;
-    }
-    .btn-submit {
-      background: var(--accent);
-      color: var(--accent-ink);
-      border: none;
-      padding: 16px 32px;
-      font-family: var(--sans);
-      font-size: 15px;
-      font-weight: 700;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .btn-submit:hover {
-      background: color-mix(in oklab, var(--accent) 85%, black);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-    
-    .comments-section {
-      margin-top: 40px;
-      border-top: 1px solid var(--rule);
-      padding-top: 32px;
-    }
-    .comments-section h4 {
-      font-family: var(--serif);
-      font-size: 20px;
-      margin-bottom: 20px;
-      font-weight: 500;
-    }
-    .comments-list {
-      display: grid;
-      gap: 16px;
-    }
-    .comment-card {
-      background: var(--bg-2);
-      padding: 20px;
-      border-radius: 8px;
-      border: 1px solid var(--rule-soft);
-      margin-bottom: 12px;
-      animation: commentFadeIn 0.5s ease;
-    }
-    .comment-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .comment-name {
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--ink);
-    }
-    .comment-card .status-badge {
-      display: inline-block;
-      width: auto;
-      padding: 4px 10px;
-      font-size: 12px;
-      border-radius: 4px;
-    }
-    .comment-text {
-      font-size: 15px;
-      line-height: 1.55;
-      color: var(--ink-soft);
-      white-space: pre-wrap;
-      margin-bottom: 0;
-    }
-    .comment-date {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      color: var(--ink-mute);
-      text-align: right;
-      margin-top: 12px;
-      font-weight: 500;
-    }
-    
-    @keyframes commentFadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== FLOATING THEME TOGGLE ===== */
-    .theme-toggle-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 200;
-      width: 48px;
-      height: 48px;
+    .advisor-avatar {
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-      background: var(--accent);
-      color: var(--accent-ink);
-      border: 1px solid var(--rule-soft);
-      cursor: pointer;
+      background: var(--bg-2);
+      color: var(--ink-mute);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-bottom: 16px;
+      position: relative;
+      transition: background 0.3s ease, color 0.3s ease;
     }
-    .theme-toggle-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    .advisor-avatar svg {
+      width: 28px;
+      height: 28px;
+      opacity: 0.55;
     }
-    .theme-toggle-btn .sun-icon {
-      display: none;
-      width: 22px;
-      height: 22px;
+    .advisor-num {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      background: var(--accent);
+      color: var(--accent-ink);
+      padding: 2px 6px;
+      border-radius: 10px;
+      line-height: 1;
     }
-    .theme-toggle-btn .moon-icon {
-      display: block;
-      width: 22px;
-      height: 22px;
+    .advisor-name {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+      font-style: italic;
     }
-    body.dark-theme .theme-toggle-btn .sun-icon {
-      display: block;
+    .advisor-title {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.4;
+      margin-bottom: 4px;
+      font-weight: 500;
     }
-    body.dark-theme .theme-toggle-btn .moon-icon {
-      display: none;
+    .advisor-org {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.02em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
+      font-weight: 600;
     }
 
     /* ===== FOOTER ===== */
@@ -1117,10 +972,6 @@
       .timeline-nav {
         grid-template-columns: 1fr 1fr;
         gap: 8px;
-      }
-      .radio-group {
-        grid-template-columns: 1fr;
-        gap: 10px;
       }
     }
 
@@ -1182,7 +1033,7 @@
       .doc-title {
         font-size: clamp(30px, 9vw, 44px);
       }
-      .timeline-content, .concepts-content, .signoff-widget {
+      .timeline-content, .concepts-content {
         padding: 24px 20px;
       }
       .obj-list li {
@@ -1229,7 +1080,7 @@
         <a href="#roadmap">Timeline</a>
         <a href="#concepts">Pilot Concepts</a>
         <a href="#deliverables">Deliverables</a>
-        <a href="#signoff" style="border: 1px solid var(--accent); color: var(--accent); font-weight:600;">Sign-off</a>
+        <a href="#advisors" style="border: 1px solid var(--accent); color: var(--accent); font-weight:600;">Advisors</a>
       </nav>
     </div>
   </header>
@@ -1246,7 +1097,7 @@
           </div>
           <div class="cell">
             <span class="l">Proposed By</span>
-            <span class="v">Career Services & Partnerships<br/><em>Career Partnership Initiative (CPI)</em></span>
+            <span class="v">Career Services & Partnerships<br/><em>Career Pass Institute (CPI)</em></span>
           </div>
           <div class="cell">
             <span class="l">Date of Proposal</span>
@@ -1347,11 +1198,21 @@
             We apply a human-centered design lens to achieve five core objectives for Van Lang University:
           </p>
           <ol class="obj-list">
-            <li><strong>Reimagine career services & competency development:</strong> Apply a human-centered design lens to shift career offices from passive services to active student launchpads.</li>
-            <li><strong>Establish expected competency standards:</strong> Define a clear picture of employer-expected competencies for entry-level hires, informed by leading national and global frameworks.</li>
-            <li><strong>Audit VLU student positioning:</strong> Review where Van Lang students stand — what they bring, what's missing, and how current services measure up.</li>
-            <li><strong>Design context-sensitive solutions:</strong> Develop a customized model that addresses the employability gap facing Van Lang students in the local market.</li>
-            <li><strong>Deliver a Minimum Viable Product (MVP):</strong> Hand over a functional prototype ready for pilot testing and rapid iteration in the coming semesters.</li>
+            <li>
+              <div><strong>Reimagine career services & competency development:</strong> Apply a human-centered design lens to shift career offices from passive services to active student launchpads.</div>
+            </li>
+            <li>
+              <div><strong>Establish expected competency standards:</strong> Define a clear picture of employer-expected competencies for entry-level hires, informed by leading national and global frameworks.</div>
+            </li>
+            <li>
+              <div><strong>Audit VLU student positioning:</strong> Review where Van Lang students stand — what they bring, what's missing, and how current services measure up.</div>
+            </li>
+            <li>
+              <div><strong>Design context-sensitive solutions:</strong> Develop a customized model that addresses the employability gap facing Van Lang students in the local market.</div>
+            </li>
+            <li>
+              <div><strong>Deliver a Minimum Viable Product (MVP):</strong> Hand over a functional prototype ready for pilot testing and rapid iteration in the coming semesters.</div>
+            </li>
           </ol>
         </div>
       </div>
@@ -1473,17 +1334,29 @@
                 <div class="concept-col">
                   <h4>For Mass Students</h4>
                   <ul>
-                    <li><strong>AI CV Reviewer:</strong> Online platform giving students instant, actionable feedback on Resumes, Cover Letters, and Portfolios, aligned with local employers' ATS criteria.</li>
-                    <li><strong>On-demand Learning:</strong> Interactive video courses and resources covering resume writing, LinkedIn optimization, networking, and interview readiness.</li>
-                    <li><em>Case studies: Wonsulting (AI), Coursera (E-learning).</em></li>
+                    <li>
+                      <div><strong>AI CV Reviewer:</strong> Online platform giving students instant, actionable feedback on Resumes, Cover Letters, and Portfolios, aligned with local employers' ATS criteria.</div>
+                    </li>
+                    <li>
+                      <div><strong>On-demand Learning:</strong> Interactive video courses and resources covering resume writing, LinkedIn optimization, networking, and interview readiness.</div>
+                    </li>
+                    <li>
+                      <div><em>Case studies: Wonsulting (AI), Coursera (E-learning).</em></div>
+                    </li>
                   </ul>
                 </div>
                 <div class="concept-col highlighted">
                   <h4>For Elite Students (Top 5%)</h4>
                   <ul>
-                    <li><strong>1-1 Mentoring:</strong> Personalized mock interviews and advanced resume polishing with senior industry recruiters.</li>
-                    <li><strong>Honors Program:</strong> Interactive workshops on Systems Thinking, workplace AI usage, and solving real corporate case studies.</li>
-                    <li><strong>Direct Referrals:</strong> Fast-track introduction to top-tier employer partners for premium internship and management trainee roles.</li>
+                    <li>
+                      <div><strong>1-1 Mentoring:</strong> Personalized mock interviews and advanced resume polishing with senior industry recruiters.</div>
+                    </li>
+                    <li>
+                      <div><strong>Honors Program:</strong> Interactive workshops on Systems Thinking, workplace AI usage, and solving real corporate case studies.</div>
+                    </li>
+                    <li>
+                      <div><strong>Direct Referrals:</strong> Fast-track introduction to top-tier employer partners for premium internship and management trainee roles.</div>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -1498,17 +1371,29 @@
                 <div class="concept-col">
                   <h4>Job Simulation Platform</h4>
                   <ul>
-                    <li><strong>Simulated Work Tasks:</strong> Partner with employers to build short, online task simulations (3-5 hours) mirroring daily duties of roles like Marketing Executive or Data Analyst.</li>
-                    <li><strong>Talent Pooling:</strong> Employers automatically receive a validated pool of students who demonstrate interest and competency.</li>
-                    <li><em>Case study: The Forage.</em></li>
+                    <li>
+                      <div><strong>Simulated Work Tasks:</strong> Partner with employers to design short, online task simulations (3-5 hours) mirroring daily duties of roles like Marketing Executive or Data Analyst.</div>
+                    </li>
+                    <li>
+                      <div><strong>Talent Pooling:</strong> Employers automatically receive a validated pool of students who demonstrate interest and competency.</div>
+                    </li>
+                    <li>
+                      <div><em>Case study: The Forage.</em></div>
+                    </li>
                   </ul>
                 </div>
                 <div class="concept-col">
                   <h4>1-1 Career Consultations</h4>
                   <ul>
-                    <li><strong>Pre-booked Consultations:</strong> Schedule 1-1 sessions with professional counselors at the career service office.</li>
-                    <li><strong>Career Planning:</strong> Individualized guidance for resume roadblocks, salary negotiation, and career path decisions.</li>
-                    <li><em>Case studies: RMIT University, Fulbright University.</em></li>
+                    <li>
+                      <div><strong>Pre-booked Consultations:</strong> Schedule 1-1 sessions with professional counselors at the career service office.</div>
+                    </li>
+                    <li>
+                      <div><strong>Career Planning:</strong> Individualized guidance for resume roadblocks, salary negotiation, and career path decisions.</div>
+                    </li>
+                    <li>
+                      <div><em>Case studies: RMIT University, Fulbright University.</em></div>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -1523,16 +1408,26 @@
                 <div class="concept-col">
                   <h4>Opportunity Hub</h4>
                   <ul>
-                    <li><strong>Integrated Job Board:</strong> Curated board for internships and entry-level positions where companies post and students apply directly.</li>
-                    <li><strong>Resume & Profile Sync:</strong> Syncs with VLU academic records, allowing companies to search candidates based on GPA, department, and skills.</li>
+                    <li>
+                      <div><strong>Integrated Job Board:</strong> Curated board for internships and entry-level positions where companies post and students apply directly.</div>
+                    </li>
+                    <li>
+                      <div><strong>Resume & Profile Sync:</strong> Syncs with VLU academic records, allowing companies to search candidates based on GPA, department, and skills.</div>
+                    </li>
                   </ul>
                 </div>
                 <div class="concept-col">
                   <h4>Cẩm nang & Alumni Network</h4>
                   <ul>
-                    <li><strong>Skill Guides:</strong> Short blog posts, templates, and video bytes on resume preparation and interview tips.</li>
-                    <li><strong>Alumni Directory:</strong> Information hub of active VLU alumni, fostering mentor-mentee connections and referrals.</li>
-                    <li><em>Case studies: Handshake, Kinobi.</em></li>
+                    <li>
+                      <div><strong>Skill Guides:</strong> Short blog posts, templates, and video bytes on resume preparation and interview tips.</div>
+                    </li>
+                    <li>
+                      <div><strong>Alumni Directory:</strong> Information hub of active VLU alumni, fostering mentor-mentee connections and referrals.</div>
+                    </li>
+                    <li>
+                      <div><em>Case studies: Handshake, Kinobi.</em></div>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -1618,58 +1513,20 @@
       </div>
     </section>
 
-    <!-- =================== 06 SIGN OFF WIDGET =================== -->
-    <section class="psection shell" id="signoff">
+    <!-- =================== 06 BOARD OF ADVISORS =================== -->
+    <section class="psection shell" id="advisors">
       <div class="psection-grid">
         <div class="psection-num">
           <div class="n">06</div>
-          <h2>Proposal<br/><em>Sign-Off</em></h2>
+          <h2>Board of<br/><em>Advisors</em></h2>
         </div>
         <div>
-          <div class="signoff-widget">
-            <h3>Proposal Feedback &amp; Sign-Off Board</h3>
-            <p class="signoff-note">
-              VLU Board of Directors and advisors may leave feedback or demo approvals below (interactive data is saved in your local browser).
-            </p>
-            
-            <form id="signoff-form">
-              <div class="form-group">
-                <label class="group-title" for="sign-name">Full Name of Board Member</label>
-                <input type="text" id="sign-name" placeholder="e.g., Prof. Dr. Nguyen Van A" required>
-              </div>
-              
-              <div class="form-group">
-                <label class="group-title">Approval Status</label>
-                <div class="radio-group">
-                  <label class="radio-label">
-                    <input type="radio" name="sign-status" value="Approved" checked>
-                    <span class="status-badge approved">Approve Completely</span>
-                  </label>
-                  <label class="radio-label">
-                    <input type="radio" name="sign-status" value="Approved-Notes">
-                    <span class="status-badge notes">Approve with Conditions</span>
-                  </label>
-                  <label class="radio-label">
-                    <input type="radio" name="sign-status" value="Discuss">
-                    <span class="status-badge discuss">Needs Discussion</span>
-                  </label>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="group-title" for="sign-comment">Detailed Feedback or Notes</label>
-                <textarea id="sign-comment" rows="4" placeholder="Enter your comments or required tweaks for the proposal..." required></textarea>
-              </div>
-              
-              <button type="submit" class="btn-submit">Submit Feedback &amp; Confirm Approval</button>
-            </form>
-
-            <div class="comments-section">
-              <h4>Board Feedback Log</h4>
-              <div class="comments-list" id="comments-list">
-                <!-- Comments generated by Javascript -->
-              </div>
-            </div>
+          <p style="margin-bottom: 32px; color: var(--ink-soft);">
+            We are assembling a distinguished Board of Advisors comprising 20 leading academic minds and industry executives to guide curriculum design, validate expected competency frameworks, and facilitate direct pipeline introductions with employers.
+          </p>
+          
+          <div class="advisors-grid" id="advisors-grid">
+            <!-- Rendered dynamically by JavaScript to keep source clean -->
           </div>
         </div>
       </div>
@@ -1680,7 +1537,7 @@
   <!-- =================== FOOTER =================== -->
   <footer class="foot">
     <div class="shell foot-bar">
-      <p class="meta">© 2026 · Career Partnership Initiative (CPI) proposal for VLU</p>
+      <p class="meta">© 2026 · Career Pass Institute (CPI) proposal for VLU</p>
       <ul class="foot-contact">
         <li>
           <a href="mailto:careers@vlu.edu.vn" title="Email Us">
@@ -1857,111 +1714,30 @@
       window.addEventListener("scroll", scrollSpy);
       scrollSpy();
 
-      // 7. SIGN-OFF WIDGET WITH LOCALSTORAGE
-      const defaultComments = [
-        {
-          name: "Prof. Dr. Nguyen Van A (Vice President)",
-          status: "Approved-Notes",
-          comment: "The proposed hybrid model is highly practical. The focus on AI CV review for the mass cohort is timely. We should emphasize communications so students adopt the tool early in the Prototype phase.",
-          date: "23/05/2026 10:15"
-        },
-        {
-          name: "Dr. Tran Thi B (Director of Corporate Partnerships)",
-          status: "Approved",
-          comment: "The Drexel and Columbia comparison is highly accurate. For the Vietnamese market, this flexible 'Beyond Co-op' model is the most suitable. Corporate partners will welcome students trained in System Thinking.",
-          date: "23/05/2026 11:30"
-        }
-      ];
-
-      const initComments = () => {
-        let comments = localStorage.getItem("vlu_proposal_comments");
-        if (!comments) {
-          localStorage.setItem("vlu_proposal_comments", JSON.stringify(defaultComments));
-          comments = JSON.stringify(defaultComments);
-        }
-        renderComments(JSON.parse(comments));
-      };
-
-      const renderComments = (list) => {
-        const container = document.getElementById("comments-list");
-        if (!container) return;
-        
-        if (list.length === 0) {
-          container.innerHTML = '<p style="font-style: italic; color: var(--ink-mute);">No feedback submitted yet.</p>';
-          return;
-        }
-        
-        container.innerHTML = list.map(item => {
-          let badgeText = "";
-          let badgeClass = "";
-          if (item.status === "Approved") {
-            badgeText = "Approved";
-            badgeClass = "approved";
-          } else if (item.status === "Approved-Notes") {
-            badgeText = "Approved with Conditions";
-            badgeClass = "notes";
-          } else if (item.status === "Discuss") {
-            badgeText = "Needs Discussion";
-            badgeClass = "discuss";
-          }
-          
-          return `
-            <div class="comment-card">
-              <div class="comment-meta">
-                <span class="comment-name">${escapeHtml(item.name)}</span>
-                <span class="status-badge ${badgeClass}">${badgeText}</span>
+      // 7. RENDER 20 EMPTY ADVISOR CARD PLACEHOLDERS
+      const advisorsGrid = document.getElementById("advisors-grid");
+      if (advisorsGrid) {
+        let cardsHtml = "";
+        for (let i = 1; i <= 20; i++) {
+          const numStr = i < 10 ? "0" + i : i;
+          cardsHtml += `
+            <div class="advisor-card">
+              <div class="advisor-avatar">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
+                </svg>
+                <span class="advisor-num">${numStr}</span>
               </div>
-              <p class="comment-text">${escapeHtml(item.comment)}</p>
-              <div class="comment-date">${item.date}</div>
+              <div class="advisor-info">
+                <h4 class="advisor-name">[Advisor Name]</h4>
+                <p class="advisor-title">[Academic/Industry Title]</p>
+                <p class="advisor-org">[Company / Institution]</p>
+              </div>
             </div>
           `;
-        }).join("");
-      };
-
-      const escapeHtml = (text) => {
-        const map = {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#039;'
-        };
-        return text.replace(/[&<>"']/g, m => map[m]);
-      };
-
-      const form = document.getElementById("signoff-form");
-      if (form) {
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const nameInput = document.getElementById("sign-name");
-          const commentInput = document.getElementById("sign-comment");
-          const statusInput = document.querySelector('input[name="sign-status"]:checked');
-          
-          if (!nameInput || !commentInput || !statusInput) return;
-          
-          const name = nameInput.value.trim();
-          const comment = commentInput.value.trim();
-          const status = statusInput.value;
-          
-          if (!name || !comment) return;
-          
-          const now = new Date();
-          const dateStr = now.toLocaleDateString("en-US") + " " + now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
-          
-          const newComment = { name, status, comment, date: dateStr };
-          
-          let list = JSON.parse(localStorage.getItem("vlu_proposal_comments") || "[]");
-          list.unshift(newComment);
-          localStorage.setItem("vlu_proposal_comments", JSON.stringify(list));
-          
-          renderComments(list);
-          
-          nameInput.value = "";
-          commentInput.value = "";
-        });
+        }
+        advisorsGrid.innerHTML = cardsHtml;
       }
-
-      initComments();
     });
   </script>
 </body>
